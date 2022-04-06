@@ -33,7 +33,10 @@ textarea {
 
 label {
 	display: block;
-	margin-bottom: 10px;
+	background-color: rgba(204, 204, 204, 0.192);
+	border-radius: 0.3rem;
+	width: 100px;
+	@include spacing-quick(small);
 }
 
 #area {
@@ -41,7 +44,6 @@ label {
 	&_md {
 		// @include box-debug(red);
 		@include spacing-quick();
-		
 	}
 
 	&_md {
