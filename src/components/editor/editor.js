@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import './editor.scss';
 import { textTemplate } from './textTemplate';
+import { marked } from 'marked';
 
 export default class Editor extends Component {
 	//TODO: verified
 	state = {
-		sampleText: textTemplate,
+		// textTemplate -> valeur par defaut pour textarea
+		typing: textTemplate,
 	};
 
 	//TODO: verified
 	handleChange = event => {
-		const typingText = event.target.value;
-		this.setState({ typingText });
-		console.log('typing !');
+		// ecouteur d'evenement sur chaque changement
+		const typing = event.target.value;
+		// mise a jour du state en incluant typing comme objet par destructuring
+		this.setState({ typing });
 	};
 
 	render() {
@@ -30,7 +33,7 @@ export default class Editor extends Component {
 								rows="25"
 								cols="40"
 								className="form-control z-depth-1"
-								// value={this.state.sampleText}
+								value={this.state.typing}
 							></textarea>
 						</div>
 					</div>
