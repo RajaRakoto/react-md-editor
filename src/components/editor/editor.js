@@ -1,35 +1,68 @@
 import React, { Component } from 'react';
 import './editor.scss';
+import { textTemplate } from './textTemplate';
+import { marked } from 'marked';
 
 export default class Editor extends Component {
+	//TODO: verified - editor state
+	state = {
+		// textTemplate -> valeur par defaut pour textarea
+		typing: textTemplate,
+	};
+
+	//TODO: verified - sync typing with editor state
+	handleChange = event => {
+		// ecouteur d'evenement sur chaque changement
+		const typing = event.target.value;
+		// mise a jour du state en incluant typing comme objet par destructuring
+		this.setState({ typing });
+	};
+
+	//TODO: work - marked core
+	/**
+	 *
+	 * @param {state} typing test2
+	 * @returns text to markdown
+	 */
+	renderToMarkdown = typing => {
+		// arg: sanitize - mise en forme des codes HTML vers markdown
+		return { __html: marked(typing, { sanitize: false }) };
+	};
+
 	render() {
 		return (
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
+			<div className="container-fluid">
+				<div className="row">
+					<div className="col-xs-12 col-sm-12 col-md-12 col-lg-6">
 						<div id="area_text">
-							<label for="input">Input:</label>
+							<label className="d-flex justify-content-center" for="input">
+								Input
+							</label>
 							<br></br>
 							<textarea
 								id="input"
 								name="input"
-								rows="30"
-								cols="60"
+								rows="33"
+								cols="40"
 								className="form-control z-depth-1"
+								value={this.state.typing}
+								onChange={this.handleChange}
 							></textarea>
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div className="col-xs-12 col-sm-12 col-md-12 col-lg-6">
 						<div id="area_md">
-							<label for="output">Output:</label>
+							<label className="d-flex justify-content-center" for="output">
+								Output
+							</label>
 							<br></br>
-							<textarea
-								id="output"
-								name="output"
-								rows="30"
-								cols="60"
-								className="form-control z-depth-1"
-							></textarea>
+							<div id="output" name="output">
+								<div
+									dangerouslySetInnerHTML={this.renderToMarkdown(
+										this.state.typing,
+									)}
+								/>
+							</div>
 						</div>
 					</div>
 				</div>

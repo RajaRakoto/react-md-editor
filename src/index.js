@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 /* components */
@@ -8,11 +8,11 @@ import './index.scss';
 /* assets */
 import githubLogo from './assets/github-ico.svg';
 import markdownLogo from './assets/markdown-ico.svg';
-
 /* vars */
 const package_json = require('../package.json');
 const date = new Date();
 
+//TODO: verified - header (title, version, logo)
 function Header() {
 	const title1 = 'Markdown';
 	const title2 = '< Editor />';
@@ -28,6 +28,7 @@ function Header() {
 	);
 }
 
+//TODO: verified - footer (copyright, links, author)
 function Footer() {
 	const copyright = '© ' + date.getFullYear() + ' - MIT license';
 	const githubLink = (
@@ -53,17 +54,15 @@ function Footer() {
 	);
 }
 
+//TODO: verified - all render
 ReactDOM.render(
-	<React.StrictMode>
+	<Fragment>
 		<div className="background--custom"></div>
 		<Header />
 		<Editor />
 		<Footer />
-	</React.StrictMode>,
+	</Fragment>,
 	document.getElementById('root'),
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

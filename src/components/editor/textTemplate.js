@@ -1,0 +1,2 @@
+export const textTemplate =
+	'# Titre\n## Sous-Titre \n### Titre plus profond\n \nLes paragraphes sont séparés\npar une ligne vide.\n\nLaissé deux espaces à la fin d\'une ligne pour  \naller à la ligne.\n\nAttributs *italique*, **gras**, \n`monospace`, ~~rayé~~.\n\nListe:\n\n  * javascript\n  * python\n  * bash\n\nListe numérotée:\n\n  1. node\n  2. mongodb\n  3. npm\n\n *[Raja Rakoto](https://github.com/RajaRakoto/)* \n\n Lien facebook : https://web.facebook.com/raja.rakotonirina \n\n```js\n console.log("Miarahaba !"); \n``` ';
