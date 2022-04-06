@@ -4,19 +4,23 @@ import { textTemplate } from './textTemplate';
 import { marked } from 'marked';
 
 export default class Editor extends Component {
-	//TODO: verified
+	//TODO: verified - editor state
 	state = {
 		// textTemplate -> valeur par defaut pour textarea
 		typing: textTemplate,
 	};
 
-	//TODO: verified
+	//TODO: verified - sync typing with editor state
 	handleChange = event => {
 		// ecouteur d'evenement sur chaque changement
 		const typing = event.target.value;
 		// mise a jour du state en incluant typing comme objet par destructuring
 		this.setState({ typing });
 	};
+
+  //TODO: work - marked core
+  
+
 
 	render() {
 		return (

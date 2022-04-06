@@ -12,7 +12,7 @@ import markdownLogo from './assets/markdown-ico.svg';
 const package_json = require('../package.json');
 const date = new Date();
 
-//TODO: verified
+//TODO: verified - header (title, version, logo)
 function Header() {
 	const title1 = 'Markdown';
 	const title2 = '< Editor />';
@@ -28,7 +28,7 @@ function Header() {
 	);
 }
 
-//TODO: verified
+//TODO: verified - footer (copyright, links, author)
 function Footer() {
 	const copyright = '© ' + date.getFullYear() + ' - MIT license';
 	const githubLink = (
@@ -54,7 +54,7 @@ function Footer() {
 	);
 }
 
-//TODO: verified
+//TODO: verified - all render
 ReactDOM.render(
 	<Fragment>
 		<div className="background--custom"></div>
