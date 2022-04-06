@@ -16,6 +16,12 @@ export default class Editor extends Component {
 		localStorage.setItem('typing-data', typing);
 	}
 
+	//TODO: work - get typing last state
+	componentDidMount() {
+		const typing = localStorage.getItem('typing-data');
+		this.setState({ typing });
+	}
+
 	//TODO: verified - sync typing with editor state
 	handleChange = event => {
 		// ecouteur d'evenement sur chaque changement
