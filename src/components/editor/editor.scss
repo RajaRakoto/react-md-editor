@@ -30,7 +30,6 @@ textarea {
 }
 
 #output {
-	background-color: rgba(15, 15, 15, 0.123);
 	border-radius: 2rem;
 	@include spacing-quick();
 }
@@ -46,12 +45,17 @@ label {
 #area {
 	&_text,
 	&_md {
-		// @include box-debug(red);
 		@include spacing-quick();
+	}
+
+	&_text {
+		background-color: rgba(15, 15, 15, 0.123);
+		border-radius: 1rem;
 	}
 
 	&_md {
 		border-left: solid 0.5rem rgba(207, 207, 207, 0.212);
+		background-color: rgba(15, 15, 15, 0.123);
 		transition: 0.5s;
 
 		a {
