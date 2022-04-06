@@ -63,6 +63,7 @@ export default class Editor extends Component {
 								rows="33"
 								cols="40"
 								className="form-control z-depth-1"
+								placeholder="Ecrivez vos code markdown par ici OU appuyez sur [F5] pour reafficher le modele de code ..."
 								value={this.state.typing}
 								onChange={this.handleChange}
 							></textarea>
