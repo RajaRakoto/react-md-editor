@@ -1,13 +1,58 @@
+@charset "UTF-8";
+
+@import './libs/sass-eo/sass-eo.scss';
+
+/* global */
+@include normalize();
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	color: #eee;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* background */
+.background--custom {
+	background: linear-gradient(90deg, #0d9da7, #35238b, #34c7b6);
+	background-size: 300% 300%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+}
+
+/* header */
+header {
+	text-align: center;
+	@include spacing-quick();
+
+	span {
+		color: #2c2f2fa6;
+		font-size: toRem(20px);
+		@include effect-text-light(large, #ffff);
+	}
+
+	#version {
+		color: #445351a6;
+		background-color: rgba(238, 238, 238, 0.233);
+		width: toRem(120px);
+		padding: 0.3rem;
+		margin: auto;
+		border-radius: 1rem;
+	}
+}
+
+/* footer */
+footer {
+	background-color: rgba(24, 23, 23, 0.637);
+
+	a {
+		color: silver;
+		font-size: smaller;
+		text-decoration: none;
+
+		&:hover {
+			color: #34c7b6;
+		}
+	}
 }
