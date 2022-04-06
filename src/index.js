@@ -8,11 +8,11 @@ import './index.scss';
 /* assets */
 import githubLogo from './assets/github-ico.svg';
 import markdownLogo from './assets/markdown-ico.svg';
-
 /* vars */
 const package_json = require('../package.json');
 const date = new Date();
 
+//TODO: verified
 function Header() {
 	const title1 = 'Markdown';
 	const title2 = '< Editor />';
@@ -28,6 +28,7 @@ function Header() {
 	);
 }
 
+//TODO: verified
 function Footer() {
 	const copyright = '© ' + date.getFullYear() + ' - MIT license';
 	const githubLink = (
@@ -53,6 +54,7 @@ function Footer() {
 	);
 }
 
+//TODO: verified
 ReactDOM.render(
 	<Fragment>
 		<div className="background--custom"></div>
