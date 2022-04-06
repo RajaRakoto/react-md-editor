@@ -10,6 +10,12 @@ export default class Editor extends Component {
 		typing: textTemplate,
 	};
 
+	//TODO: verified - save typing state
+	componentDidUpdate() {
+		const typing = this.state.typing;
+		localStorage.setItem('typing-data', typing);
+	}
+
 	//TODO: verified - sync typing with editor state
 	handleChange = event => {
 		// ecouteur d'evenement sur chaque changement
