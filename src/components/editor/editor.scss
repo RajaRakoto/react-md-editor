@@ -25,6 +25,12 @@ textarea {
 	color: rgb(230, 225, 225);
 }
 
+#output {
+	background-color: rgba(15, 15, 15, 0.123);
+	border-radius: 2rem;
+	@include spacing-quick();
+}
+
 label {
 	display: block;
 	margin-bottom: 10px;
@@ -35,5 +41,18 @@ label {
 	&_md {
 		// @include box-debug(red);
 		@include spacing-quick();
+		
+	}
+
+	&_md {
+		border-left: solid 2px rgba(207, 207, 207, 0.411);
+		transition: 0.5s;
+	}
+
+	@media screen and (max-width: 981px) {
+		&_md {
+			border: 0px;
+			border-top: solid 2px rgba(207, 207, 207, 0.411);
+		}
 	}
 }
