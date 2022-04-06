@@ -16,7 +16,7 @@ const date = new Date();
 function Header() {
 	const title1 = 'Markdown';
 	const title2 = '< Editor />';
-	const version = 'version ' + package_json.version;
+	const version = 'beta ' + package_json.version;
 	return (
 		<header>
 			<img src={markdownLogo} alt="md-editor official logo" width={100}></img>
