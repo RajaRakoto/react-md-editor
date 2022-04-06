@@ -1,5 +1,5 @@
 const image =
-	'<img align="right" src="http://octodex.github.com/images/minion.png" alt="drawing" width="200"/>\n\n';
+	'<img align="right" src="http://octodex.github.com/images/minion.png" alt="minion github" width="200"/>\n\n';
 const title =
 	'# h1 Heading\n## h2 Heading\n### h3 Heading\n#### h4 Heading\n##### h5 Heading\n###### h6 Heading';
 const paragraphes =
