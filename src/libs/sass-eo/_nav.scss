@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+//TODO: verified
+/// nav-props permet d'initialiser rapidement les proprietEs CSS par defaut d'une barre de navigation
+@mixin nav-props() {
+	transition: 0.4s ease;
+	align-items: center;
+	justify-content: space-between;
+
+	a {
+		text-decoration: none;
+	}
+
+	ul {
+		list-style: none;
+	}
+}
+
+
