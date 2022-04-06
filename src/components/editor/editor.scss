@@ -49,6 +49,10 @@ label {
 	&_md {
 		border-left: solid 2px rgba(207, 207, 207, 0.411);
 		transition: 0.5s;
+
+		a {
+			color: cyan;
+		}
 	}
 
 	@media screen and (max-width: 981px) {
