@@ -14,12 +14,15 @@ const package_json = require('../package.json');
 const date = new Date();
 
 function Header() {
-	const title = 'Markdown < Editor />';
+	const title1 = 'Markdown';
+	const title2 = '< Editor />';
 	const version = 'version ' + package_json.version;
 	return (
 		<header>
 			<img src={markdownLogo} alt="md-editor official logo" width={100}></img>
-			<h1 id="title">{title}</h1>
+			<h1 id="title">
+				{title1} <span>{title2}</span>
+			</h1>
 			<p id="version">{version}</p>
 		</header>
 	);
