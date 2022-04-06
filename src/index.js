@@ -7,16 +7,18 @@ import Editor from './components/editor/editor';
 import './index.scss';
 /* assets */
 import githubLogo from './assets/github-ico.svg';
+import markdownLogo from './assets/markdown-ico.svg';
 
 /* vars */
 const package_json = require('../package.json');
 const date = new Date();
 
 function Header() {
-	const title = 'Markdown Editor';
+	const title = 'Markdown < Editor />';
 	const version = 'version ' + package_json.version;
 	return (
 		<header>
+			<img src={markdownLogo} alt="md-editor official logo" width={100}></img>
 			<h1 id="title">{title}</h1>
 			<p id="version">{version}</p>
 		</header>
