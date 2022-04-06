@@ -48,6 +48,7 @@ export default class Editor extends Component {
 	};
 
 	render() {
+		const editorSize = 49;
 		return (
 			<div className="container-fluid">
 				<div className="row">
@@ -60,7 +61,7 @@ export default class Editor extends Component {
 							<textarea
 								id="input"
 								name="input"
-								rows="33"
+								rows={editorSize}
 								cols="40"
 								className="form-control z-depth-1"
 								placeholder="Ecrivez vos code markdown par ici OU appuyez sur [F5] pour reafficher le modele de code ..."
