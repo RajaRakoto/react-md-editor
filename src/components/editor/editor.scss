@@ -47,7 +47,7 @@ label {
 	}
 
 	&_md {
-		border-left: solid 2px rgba(207, 207, 207, 0.411);
+		border-left: solid 0.5rem rgba(207, 207, 207, 0.212);
 		transition: 0.5s;
 
 		a {
@@ -59,6 +59,7 @@ label {
 		&_md {
 			border: 0px;
 			border-top: solid 2px rgba(207, 207, 207, 0.411);
+			border-radius: 5px;
 		}
 	}
 }
