@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 /* components */
@@ -54,12 +54,12 @@ function Footer() {
 }
 
 ReactDOM.render(
-	<React.StrictMode>
+	<Fragment>
 		<div className="background--custom"></div>
 		<Header />
 		<Editor />
 		<Footer />
-	</React.StrictMode>,
+	</Fragment>,
 	document.getElementById('root'),
 );
 
