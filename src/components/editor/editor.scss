@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+@import '../../libs/sass-eo/sass-eo.scss';
+
+#editor {
+	@include spacing-quick();
+}
+
+label,
+textarea {
+	font-size: 0.8rem;
+	letter-spacing: 1px;
+}
+
+textarea {
+	padding: 10px;
+	max-width: 100%;
+	line-height: 1.5;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.container {
+	background-color: rgba(73, 72, 72, 0.335);
+	border-radius: 20px;
+  @include spacing-quick();
+}
+
+#area {
+	&_text,
+	&_md {
+		// @include box-debug(red);
+		@include spacing-quick();
+	}
+}
