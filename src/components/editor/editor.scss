@@ -23,6 +23,10 @@ textarea {
 #input {
 	background-color: rgba(104, 97, 97, 0.911);
 	color: rgb(230, 225, 225);
+
+	&::placeholder {
+		color: rgba(240, 255, 255, 0.39);
+	}
 }
 
 #output {
@@ -47,14 +51,19 @@ label {
 	}
 
 	&_md {
-		border-left: solid 2px rgba(207, 207, 207, 0.411);
+		border-left: solid 0.5rem rgba(207, 207, 207, 0.212);
 		transition: 0.5s;
+
+		a {
+			color: cyan;
+		}
 	}
 
 	@media screen and (max-width: 981px) {
 		&_md {
 			border: 0px;
 			border-top: solid 2px rgba(207, 207, 207, 0.411);
+			border-radius: 5px;
 		}
 	}
 }
