@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@import '../../libs/sass-eo/sass-eo.scss';
+@import '../../libs/sass-eo/sass-eo-basics.scss';
 
 #editor {
 	@include spacing-quick();
@@ -9,7 +9,7 @@
 label,
 textarea {
 	font-size: 0.8rem;
-	letter-spacing: toRem(1px);
+	letter-spacing: toRem-react(1px);
 }
 
 textarea {
