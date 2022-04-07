@@ -10,7 +10,7 @@ module.exports = function (grunt) {
 		// },
 
 		jshint: {
-			all: ['./gruntfile.js', './src/index.js'],
+			all: ['./gruntfile.js', './src/index.js', './src/components/**/*.js'],
 		},
 
 		sass: {
@@ -36,5 +36,5 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 
-	grunt.registerTask('default', 'jshint', 'sass:dist');
+	grunt.registerTask('default', ['jshint:all', 'sass:dist']);
 };
