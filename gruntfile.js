@@ -1,4 +1,6 @@
 module.exports = function (grunt) {
+	require('load-grunt-tasks')(grunt);
+
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('./package.json'),
 
@@ -11,7 +13,8 @@ module.exports = function (grunt) {
 
 		jshint: {
 			options: {
-				esversion: 6,
+				esversion: 11,
+				strict: false,
 			},
 			all: ['./gruntfile.js', './src/index.js', './src/components/**/*.js'],
 		},
@@ -34,10 +37,6 @@ module.exports = function (grunt) {
 			},
 		},
 	});
-
-	// grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-sass');
 
 	grunt.registerTask('default', ['sass:dist']);
 };
