@@ -36,6 +36,14 @@ module.exports = function (grunt) {
 				],
 			},
 		},
+
+		watch: {
+			dist: {
+				files: ['./src/*.scss', './src/components/**/*.scss'],
+				tasks: ['default'],
+				options: { spawn: false },
+			},
+		},
 	});
 
 	grunt.registerTask('default', ['sass:dist']);
