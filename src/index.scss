@@ -29,14 +29,14 @@ header {
 
 	span {
 		color: #2c2f2fa6;
-		font-size: toRem-react(20px);
+		font-size: toRem(20px);
 		@include effect-text-light(large, #ffff);
 	}
 
 	#version {
 		color: #445351a6;
 		background-color: rgba(238, 238, 238, 0.233);
-		width: toRem-react(120px);
+		width: toRem(120px);
 		padding: 0.3rem;
 		margin: auto;
 		border-radius: 1rem;
