@@ -10,6 +10,9 @@ module.exports = function (grunt) {
 		// },
 
 		jshint: {
+			options: {
+				esversion: 6,
+			},
 			all: ['./gruntfile.js', './src/index.js', './src/components/**/*.js'],
 		},
 
