@@ -9,6 +9,10 @@ module.exports = function (grunt) {
 		// 	},
 		// },
 
+		jshint: {
+			all: ['./gruntfile.js', './src/index.js'],
+		},
+
 		sass: {
 			dist: {
 				options: {
@@ -29,7 +33,8 @@ module.exports = function (grunt) {
 	});
 
 	// grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 
-	grunt.registerTask('default', 'sass:dist');
+	grunt.registerTask('default', 'jshint', 'sass:dist');
 };
