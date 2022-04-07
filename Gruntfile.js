@@ -1,30 +1,35 @@
-/**
- * NOTES (grunt):
- * - le fichier 'Gruntfile.js' appartient toujours au repertoire racine du projet
- * - les compositions de ce fichier:
- *    1. wrapper function
- *    2. project configuration
- *    3. loading plugins and GRUNT tasks
- *    4. custom tasks
- */
-
-/**
- * wrapper function - tout code Grunt doit être spécifié dans cette fonction
- * @param {*} grunt
- */
- module.exports = function (grunt) {
-	/**
-	 * project configuration - la plupart des tâches Grunt reposent sur des données de configuration définies dans un objet transmis à la méthode grunt.initConfig()
-	 */
+module.exports = function (grunt) {
 	grunt.initConfig({
-		// importe les métadonnées JSON stockées package.json
-		pkg: grunt.file.readJSON('package.json'),
+		pkg: grunt.file.readJSON('./package.json'),
 
-		// concat files
-		concat: {
-			fusion: {
-        src: []
-      },
+		// concat: {
+		// 	dist: {
+		// 		src: ['src/index.scss', 'src/components/editor/editor.scss'],
+		// 		dest: 'src/dist/style.min.scss',
+		// 	},
+		// },
+
+		sass: {
+			dist: {
+				options: {
+					style: 'compressed',
+				},
+				files: [
+					{
+						src: ['./src/index.scss'],
+						dest: './src/dist/index.min.css',
+					},
+					{
+						src: ['./src/components/editor/editor.scss'],
+						dest: './src/dist/editor.min.css',
+					},
+				],
+			},
 		},
 	});
+
+	// grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-sass');
+
+	grunt.registerTask('default', 'sass:dist');
 };
