@@ -4,7 +4,7 @@ import reportWebVitals from './reportWebVitals';
 /* components */
 import Editor from './components/editor/editor';
 /* styles */
-import './index.scss';
+import './dist/index.min.css';
 /* assets */
 import githubLogo from './assets/github-ico.svg';
 import markdownLogo from './assets/markdown-ico.svg';
@@ -25,7 +25,7 @@ function Header() {
 			</h1>
 			<p id="version">{version}</p>
 		</header>
-	);
+	)
 }
 
 //TODO: verified - footer (copyright, links, author)
