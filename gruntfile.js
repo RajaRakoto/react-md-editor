@@ -84,7 +84,18 @@ module.exports = function (grunt) {
 			},
 		},
 	});
+
+	// tasks list
 	grunt.registerTask('jshint-task', ['jshint']);
 	grunt.registerTask('imagemin-task', ['imagemin']);
 	grunt.registerTask('sass-task', ['sass:dist']);
+
+	// all tasks
+	grunt.registerTask('all-tasks', 'all grunt tasks', [
+		'imagemin-task',
+		'sass-task',
+	]);
+
+	// default tasks
+	grunt.registerTask('default', ['all-tasks']);
 };
