@@ -28,7 +28,7 @@ module.exports = function (grunt) {
 				esversion: 11, // ecmascript version for jshint
 				strict: false, // strict mode
 			},
-			all: ['./gruntfile.js', './src/index.js', './src/components/**/*.js'], // js files to verify
+			dev: ['./gruntfile.js', './src/index.js', './src/components/**/*.js'], // js files to verify
 		},
 
 		// TODO: verified
@@ -39,7 +39,7 @@ module.exports = function (grunt) {
 			options: {
 				mangle: false, // variable minification
 			},
-			test: {
+			dist: {
 				files: {
 					// dest:src
 					'./src/dist/scripts/test.min.js': './src/test.js',
@@ -89,10 +89,27 @@ module.exports = function (grunt) {
 
 		// TODO: verified
 		/**
+		 * Minify HTML
+		 */
+		htmlmin: {
+			dist: {
+				options: {
+					removeComments: true,
+					collapseWhitespace: true,
+				},
+				files: {
+					// dest:src
+					'./public/index.html': './public/index.html',
+				},
+			},
+		},
+
+		// TODO: verified
+		/**
 		 * Replace text in files using strings, regexs or functions.
 		 */
 		replace: {
-			test: {
+			dev: {
 				src: ['./src/test-replace'], // working file
 				overwrite: true,
 				replacements: [
@@ -104,10 +121,9 @@ module.exports = function (grunt) {
 			},
 		},
 
-		// TODO: verified
+		// TODO: verified - cmd: grunt watch
 		/**
 		 * Run predefined tasks whenever watched file patterns are added, changed or deleted
-		 * cmd: grunt watch
 		 */
 		watch: {
 			dist: {
@@ -118,20 +134,24 @@ module.exports = function (grunt) {
 		},
 	});
 
-	// tasks list
-	grunt.registerTask('concat-task', ['concat:test']);
-	grunt.registerTask('jshint-task', ['jshint']);
-	grunt.registerTask('uglify-task', ['uglify:test']);
-	grunt.registerTask('imagemin-task', ['imagemin']);
-	grunt.registerTask('sass-task', ['sass:dist']);
-	grunt.registerTask('replace-task', ['replace:test']);
+	// --------------------------------------------------------------
 
-	// all tasks
-	grunt.registerTask('all-tasks', 'all grunt tasks', [
-		'imagemin-task',
+	// tasks list
+	grunt.registerTask('concat-task', ['concat:dev']); // dev - manual
+	grunt.registerTask('jshint-task', ['jshint:dev']); // dev - manual
+	grunt.registerTask('replace-task', ['replace:dev']); // dev - manual
+	grunt.registerTask('imagemin-task', ['imagemin']); // dist - manual
+	grunt.registerTask('uglify-task', ['uglify:dist']); // dist - manual
+	grunt.registerTask('htmlmin-task', ['htmlmin:dist']); // dist - auto
+	grunt.registerTask('sass-task', ['sass:dist']); // dist - auto - watched
+
+	// TODO: update tasks ...
+	// all auto tasks
+	grunt.registerTask('all', 'all grunt tasks running at the same time', [
+		'htmlmin-task',
 		'sass-task',
 	]);
 
 	// default tasks
-	grunt.registerTask('default', ['all-tasks']);
+	grunt.registerTask('default', ['all']);
 };
