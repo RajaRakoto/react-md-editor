@@ -8,14 +8,14 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('./package.json'),
 
-		// TODO: testing
+		// TODO: verified
 		/**
 		 * Conatenate files
 		 */
 		concat: {
-			dist: {
-				src: ['./src/index.scss', './src/components/editor/editor.scss'],
-				dest: './src/dist/style.min.scss',
+			test: {
+				src: ['./src/file-a', './src/file-b'], // all file to concat
+				dest: './src/file-c', // output
 			},
 		},
 
@@ -73,6 +73,23 @@ module.exports = function (grunt) {
 
 		// TODO: verified
 		/**
+		 * Replace text in files using strings, regexs or functions.
+		 */
+		replace: {
+			test: {
+				src: ['./src/test-replace'], // working file
+				overwrite: true,
+				replacements: [
+					{
+						from: 'red',
+						to: 'blue',
+					},
+				],
+			},
+		},
+
+		// TODO: verified
+		/**
 		 * Run predefined tasks whenever watched file patterns are added, changed or deleted
 		 * cmd: grunt watch
 		 */
@@ -86,9 +103,11 @@ module.exports = function (grunt) {
 	});
 
 	// tasks list
+	grunt.registerTask('concat-task', ['concat:test']);
 	grunt.registerTask('jshint-task', ['jshint']);
 	grunt.registerTask('imagemin-task', ['imagemin']);
 	grunt.registerTask('sass-task', ['sass:dist']);
+	grunt.registerTask('replace-task', ['replace:test']);
 
 	// all tasks
 	grunt.registerTask('all-tasks', 'all grunt tasks', [
