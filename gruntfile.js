@@ -131,6 +131,20 @@ module.exports = function (grunt) {
 			},
 		},
 
+		// TODO: verified
+		babel: {
+			options: {
+				sourceMap: false,
+				presets: ['@babel/preset-react'], // for react env
+			},
+			dist: {
+				files: {
+					'test/scripts/editor.js': './src/components/editor/editor.js',
+					'test/scripts/index.js': './src/index.js',
+				},
+			},
+		},
+
 		// TODO: verified - cmd: grunt watch
 		/**
 		 * Run predefined tasks whenever watched file patterns are added, changed or deleted
@@ -143,7 +157,6 @@ module.exports = function (grunt) {
 			},
 		},
 	});
-
 	// --------------------------------------------------------------
 
 	// tasks list
@@ -155,6 +168,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('uglify-task', ['uglify:dist']); // dist - manual
 	grunt.registerTask('htmlmin-task', ['htmlmin:dist']); // dist - auto
 	grunt.registerTask('sass-task', ['sass:dist']); // dist - auto - watched
+	grunt.registerTask('babel-task', ['babel:dist']); // dist - manual
 
 	// TODO: update tasks ...
 	// all auto tasks
