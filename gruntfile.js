@@ -33,6 +33,40 @@ module.exports = function (grunt) {
 
 		// TODO: verified
 		/**
+		 * Replace text in files using strings, regexs or functions.
+		 */
+		replace: {
+			dev: {
+				src: ['./src/test-replace'], // working file
+				overwrite: true,
+				replacements: [
+					{
+						from: 'red',
+						to: 'blue',
+					},
+				],
+			},
+		},
+
+		// TODO: verified
+		/**
+		 * Minify & optimize all images
+		 */
+		imagemin: {
+			dynamic: {
+				files: [
+					{
+						expand: true,
+						cwd: './src/assets/images/', // img source
+						src: ['**/*.{png,jpg,gif,svg}'], // img extension
+						dest: imageDistDestination, // img destination
+					},
+				],
+			},
+		},
+
+		// TODO: verified
+		/**
 		 * Minify & optimize js files
 		 */
 		uglify: {
@@ -43,6 +77,23 @@ module.exports = function (grunt) {
 				files: {
 					// dest:src
 					'./src/dist/scripts/test.min.js': './src/test.js',
+				},
+			},
+		},
+
+		// TODO: verified
+		/**
+		 * Minify HTML
+		 */
+		htmlmin: {
+			dist: {
+				options: {
+					removeComments: true,
+					collapseWhitespace: true,
+				},
+				files: {
+					// dest:src
+					'./public/index.html': './public/index.html',
 				},
 			},
 		},
@@ -70,57 +121,6 @@ module.exports = function (grunt) {
 			},
 		},
 
-		// TODO: verified
-		/**
-		 * Minify & optimize all images
-		 */
-		imagemin: {
-			dynamic: {
-				files: [
-					{
-						expand: true,
-						cwd: './src/assets/images/', // img source
-						src: ['**/*.{png,jpg,gif,svg}'], // img extension
-						dest: imageDistDestination, // img destination
-					},
-				],
-			},
-		},
-
-		// TODO: verified
-		/**
-		 * Minify HTML
-		 */
-		htmlmin: {
-			dist: {
-				options: {
-					removeComments: true,
-					collapseWhitespace: true,
-				},
-				files: {
-					// dest:src
-					'./public/index.html': './public/index.html',
-				},
-			},
-		},
-
-		// TODO: verified
-		/**
-		 * Replace text in files using strings, regexs or functions.
-		 */
-		replace: {
-			dev: {
-				src: ['./src/test-replace'], // working file
-				overwrite: true,
-				replacements: [
-					{
-						from: 'red',
-						to: 'blue',
-					},
-				],
-			},
-		},
-
 		// TODO: verified - cmd: grunt watch
 		/**
 		 * Run predefined tasks whenever watched file patterns are added, changed or deleted
@@ -140,6 +140,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('concat-task', ['concat:dev']); // dev - manual
 	grunt.registerTask('jshint-task', ['jshint:dev']); // dev - manual
 	grunt.registerTask('replace-task', ['replace:dev']); // dev - manual
+	grunt.registerTask('shell-task', ['sass:dev']); // dev - manual
 	grunt.registerTask('imagemin-task', ['imagemin']); // dist - manual
 	grunt.registerTask('uglify-task', ['uglify:dist']); // dist - manual
 	grunt.registerTask('htmlmin-task', ['htmlmin:dist']); // dist - auto
