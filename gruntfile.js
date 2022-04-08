@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 		 */
 		concat: {
 			test: {
-				src: ['./src/file-a', './src/file-b'], // all file to concat
+				src: ['./src/file-a', './src/file-b'], // all files to concat
 				dest: './src/file-c', // output
 			},
 		},
@@ -28,7 +28,23 @@ module.exports = function (grunt) {
 				esversion: 11, // ecmascript version for jshint
 				strict: false, // strict mode
 			},
-			all: ['./gruntfile.js', './src/index.js', './src/components/**/*.js'], // js file to verify
+			all: ['./gruntfile.js', './src/index.js', './src/components/**/*.js'], // js files to verify
+		},
+
+		// TODO: verified
+		/**
+		 * Minify & optimize js files
+		 */
+		uglify: {
+			options: {
+				mangle: false, // variable minification
+			},
+			test: {
+				files: {
+					// dest:src
+					'./src/dist/scripts/test.min.js': './src/test.js',
+				},
+			},
 		},
 
 		// TODO: verified
@@ -95,7 +111,7 @@ module.exports = function (grunt) {
 		 */
 		watch: {
 			dist: {
-				files: ['./src/*.scss', './src/components/**/*.scss'], // scss file list to watch
+				files: ['./src/*.scss', './src/components/**/*.scss'], // scss files list to watch
 				tasks: ['sass-task'], // default task to execute
 				options: { spawn: false }, // watch optimization
 			},
@@ -105,6 +121,7 @@ module.exports = function (grunt) {
 	// tasks list
 	grunt.registerTask('concat-task', ['concat:test']);
 	grunt.registerTask('jshint-task', ['jshint']);
+	grunt.registerTask('uglify-task', ['uglify:test']);
 	grunt.registerTask('imagemin-task', ['imagemin']);
 	grunt.registerTask('sass-task', ['sass:dist']);
 	grunt.registerTask('replace-task', ['replace:test']);
