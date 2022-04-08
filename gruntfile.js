@@ -50,6 +50,16 @@ module.exports = function (grunt) {
 
 		// TODO: verified
 		/**
+		 * Run shell commands
+		 */
+		shell: {
+			dev: {
+				command: ['mkdir test', 'cd test', 'touch file'].join('&&'),
+			},
+		},
+
+		// TODO: verified
+		/**
 		 * Minify & optimize all images
 		 */
 		imagemin: {
@@ -140,7 +150,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('concat-task', ['concat:dev']); // dev - manual
 	grunt.registerTask('jshint-task', ['jshint:dev']); // dev - manual
 	grunt.registerTask('replace-task', ['replace:dev']); // dev - manual
-	grunt.registerTask('shell-task', ['sass:dev']); // dev - manual
+	grunt.registerTask('shell-task', ['shell:dev']); // dev - manual
 	grunt.registerTask('imagemin-task', ['imagemin']); // dist - manual
 	grunt.registerTask('uglify-task', ['uglify:dist']); // dist - manual
 	grunt.registerTask('htmlmin-task', ['htmlmin:dist']); // dist - auto
