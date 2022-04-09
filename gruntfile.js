@@ -4,6 +4,10 @@ module.exports = function (grunt) {
 	// all files destination
 	const sassDistDestination = './src/dist/styles/';
 	const imageDistDestination = './src/dist/images/';
+	const backupsDestination = './backups/';
+
+	// node-glob syntax
+	const includeAllFiles = ['**/*', '.*/**/*', '**/.*', '**/.*/**/*'];
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('./package.json'),
@@ -45,16 +49,6 @@ module.exports = function (grunt) {
 						to: 'blue',
 					},
 				],
-			},
-		},
-
-		// TODO: verified
-		/**
-		 * Run shell commands
-		 */
-		shell: {
-			dev: {
-				command: ['mkdir test', 'cd test', 'touch file'].join('&&'),
 			},
 		},
 
@@ -145,38 +139,90 @@ module.exports = function (grunt) {
 			},
 		},
 
-		// TODO: verified - cmd: grunt watch
+		// TODO: verified - cmd: grunt shell:<command_name>
+		/**
+		 * Run shell commands
+		 */
+		shell: {
+			backup_modules: {
+				command: ['tar cvfz backups/node_modules.tar.gz node_modules/'].join(
+					// example
+					'&&',
+				),
+			},
+		},
+
+		// TODO: verified - cmd: grunt compress:<bck_name>
+		/**
+		 * Compress files and folders (incremental backup)
+		 */
+		compress: {
+			main: {
+				options: {
+					archive: backupsDestination + 'main.tar.gz',
+				},
+				files: [{ src: ['./*', './.*'] }],
+				filter: 'isFile',
+			},
+			modules: {
+				options: {
+					archive: backupsDestination + 'node_modules.tar.gz',
+				},
+				expand: true,
+				cwd: './node_modules/',
+				src: includeAllFiles,
+				dest: 'node_modules',
+			},
+			src: {
+				options: {
+					archive: backupsDestination + 'src.tar.gz',
+				},
+				expand: true,
+				cwd: './src/',
+				src: includeAllFiles,
+				dest: 'src',
+			},
+			public: {
+				options: {
+					archive: backupsDestination + 'public.tar.gz',
+				},
+				expand: true,
+				cwd: './public/',
+				src: includeAllFiles,
+				dest: 'public',
+			},
+		},
+
+		// TODO: verified
 		/**
 		 * Run predefined tasks whenever watched file patterns are added, changed or deleted
 		 */
 		watch: {
-			dist: {
+			sass: {
 				files: ['./src/*.scss', './src/components/**/*.scss'], // scss files list to watch
 				tasks: ['sass-task'], // default task to execute
 				options: { spawn: false }, // watch optimization
 			},
 		},
 	});
-	// --------------------------------------------------------------
 
 	// tasks list
 	grunt.registerTask('concat-task', ['concat:dev']); // dev - manual
 	grunt.registerTask('jshint-task', ['jshint:dev']); // dev - manual
 	grunt.registerTask('replace-task', ['replace:dev']); // dev - manual
-	grunt.registerTask('shell-task', ['shell:dev']); // dev - manual
 	grunt.registerTask('imagemin-task', ['imagemin']); // dist - manual
 	grunt.registerTask('uglify-task', ['uglify:dist']); // dist - manual
-	grunt.registerTask('htmlmin-task', ['htmlmin:dist']); // dist - auto
-	grunt.registerTask('sass-task', ['sass:dist']); // dist - auto - watched
+	grunt.registerTask('htmlmin-task', ['htmlmin:dist']); // dist - manual
+	grunt.registerTask('sass-task', ['sass:dist']); // dist - watched
 	grunt.registerTask('babel-task', ['babel:dist']); // dist - manual
 
-	// TODO: update tasks ...
-	// all auto tasks
-	grunt.registerTask('all', 'all grunt tasks running at the same time', [
-		'htmlmin-task',
-		'sass-task',
+	// all mixed tasks
+	grunt.registerTask('compress-all', [
+		'compress:main',
+		'compress:public',
+		'compress:src',
 	]);
 
-	// default tasks
-	grunt.registerTask('default', ['all']);
+	// all watched tasks
+	grunt.registerTask('watch-sass', ['watch:sass']);
 };
