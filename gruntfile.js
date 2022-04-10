@@ -17,7 +17,8 @@ module.exports = function (grunt) {
 		 * Conatenate files
 		 */
 		concat: {
-			test: {
+			dev: {
+				// example
 				src: ['./src/file-a', './src/file-b'], // all files to concat
 				dest: './src/file-c', // output
 			},
@@ -40,6 +41,7 @@ module.exports = function (grunt) {
 		 * Replace text in files using strings, regexs or functions.
 		 */
 		replace: {
+			// example
 			dev: {
 				src: ['./src/test-replace'], // working file
 				overwrite: true,
@@ -80,7 +82,8 @@ module.exports = function (grunt) {
 			dist: {
 				files: {
 					// dest:src
-					'./src/dist/scripts/test.min.js': './src/test.js',
+					'./src/components/editor/textTemplate.js':
+						'./src/components/editor/textTemplate.js',
 				},
 			},
 		},
@@ -127,14 +130,14 @@ module.exports = function (grunt) {
 
 		// TODO: verified
 		babel: {
+			// example
 			options: {
 				sourceMap: false,
 				presets: ['@babel/preset-react'], // for react env
 			},
 			dist: {
 				files: {
-					'test/scripts/editor.js': './src/components/editor/editor.js',
-					'test/scripts/index.js': './src/index.js',
+					'test/myfile.js': 'dist/myfiles.js',
 				},
 			},
 		},
@@ -144,11 +147,9 @@ module.exports = function (grunt) {
 		 * Run shell commands
 		 */
 		shell: {
-			backup_modules: {
-				command: ['tar cvfz backups/node_modules.tar.gz node_modules/'].join(
-					// example
-					'&&',
-				),
+			// example
+			dev: {
+				command: ['touch test'].join('&&'),
 			},
 		},
 
@@ -199,30 +200,142 @@ module.exports = function (grunt) {
 		 */
 		watch: {
 			sass: {
-				files: ['./src/*.scss', './src/components/**/*.scss'], // scss files list to watch
+				files: ['./src/*.scss', './src/components/**/*.scss'], // src listening
 				tasks: ['sass-task'], // default task to execute
 				options: { spawn: false }, // watch optimization
 			},
 		},
 	});
 
-	// tasks list
-	grunt.registerTask('concat-task', ['concat:dev']); // dev - manual
-	grunt.registerTask('jshint-task', ['jshint:dev']); // dev - manual
-	grunt.registerTask('replace-task', ['replace:dev']); // dev - manual
-	grunt.registerTask('imagemin-task', ['imagemin']); // dist - manual
-	grunt.registerTask('uglify-task', ['uglify:dist']); // dist - manual
-	grunt.registerTask('htmlmin-task', ['htmlmin:dist']); // dist - manual
-	grunt.registerTask('sass-task', ['sass:dist']); // dist - watched
-	grunt.registerTask('babel-task', ['babel:dist']); // dist - manual
+	// grunt basics tasks
+	grunt.registerTask('concat-task', ['concat:dev']); // manual
+	grunt.registerTask('jshint-task', ['jshint:dev']); // manual
+	grunt.registerTask('replace-task', ['replace:dev']); // manual
+	grunt.registerTask('imagemin-task', ['imagemin']); // manual
+	grunt.registerTask('uglify-task', ['uglify:dist']); // manual
+	grunt.registerTask('htmlmin-task', ['htmlmin:dist']); // manual
+	grunt.registerTask('sass-task', ['sass:dist']); // watched
+	grunt.registerTask('babel-task', ['babel:dist']); // manual
+	grunt.registerTask('shell-task', ['shell:dev']); // manual
 
-	// all mixed tasks
+	// grunt mixed tasks
 	grunt.registerTask('compress-all', [
 		'compress:main',
 		'compress:public',
 		'compress:src',
 	]);
 
-	// all watched tasks
+	// grunt watched tasks
 	grunt.registerTask('watch-sass', ['watch:sass']);
+
+	// grunt others tasks
+	grunt.registerTask('compress-modules'), ['compress:modules'];
+
+	// arrays basics tasks
+	const basicsTaskNames = [
+		'concat-task',
+		'jshint-task',
+		'replace-task',
+		'imagemin-task',
+		'uglify-task',
+		'htmlmin-task',
+		'sass-task',
+		'babel-task',
+		'shell-task',
+	];
+	const basicsTaskStatus = [
+		'concat:dev',
+		'jshint:dev',
+		'replace:dev',
+		'imagemin',
+		'uglify:dist',
+		'htmlmin:dist',
+		'sass:dist',
+		'babel:dist',
+		'shell:dev',
+	];
+
+	// arrays mixed tasks
+	const mixedTaskNames = ['compress-all'];
+	const mixedTaskStatus = ['(compress:main | compress:public | compress:src)'];
+
+	// arrays watched tasks
+	const watchedTaskNames = ['watch-sass'];
+	const watchedTaskStatus = ['watch:sass'];
+
+	// arrays others tasks
+	const othersTaskNames = ['compress-modules'];
+	const othersTaskStatus = ['compress:modules'];
+
+	// default tasks
+	grunt.registerTask('default', () => {
+		console.log(
+			'\nHere are the lists of plugins (tasks) you can run with grunt:'.green,
+		);
+
+		/**
+		 *
+		 * @param {string} taskTitle - task title (Eg: basics tasks)
+		 * @param {array} taskNames - task names (Eg: basicsTaskNames)
+		 * @param {array} taskStatus - task status (Eg: basicsTaskStatus)
+		 * @param {string} taskTheme - colors of theme (Eg: black ,red ,green ,yellow ,blue ,magenta ,cyan ,white ,gray ,grey)
+		 */
+		function getTaskResume(taskTitle, taskNames, taskStatus, taskTheme) {
+			switch (taskTheme) {
+				case 'cyan':
+					console.log(`\n${taskTitle}`.cyan.inverse.bold);
+					taskNames.forEach((taskNames, index) => {
+						console.log(taskNames.cyan + ` -> ${taskStatus[index]}`);
+					});
+					break;
+				case 'magenta':
+					console.log(`\n${taskTitle}`.magenta.inverse.bold);
+					taskNames.forEach((taskNames, index) => {
+						console.log(taskNames.magenta + ` -> ${taskStatus[index]}`);
+					});
+					break;
+				case 'yellow':
+					console.log(`\n${taskTitle}`.yellow.inverse.bold);
+					taskNames.forEach((taskNames, index) => {
+						console.log(taskNames.yellow + ` -> ${taskStatus[index]}`);
+					});
+					break;
+				case 'blue':
+					console.log(`\n${taskTitle}`.blue.inverse.bold);
+					taskNames.forEach((taskNames, index) => {
+						console.log(taskNames.blue + ` -> ${taskStatus[index]}`);
+					});
+					break;
+
+				default:
+					null;
+					break;
+			}
+		}
+
+		// all tasks resume
+		getTaskResume('basics tasks', basicsTaskNames, basicsTaskStatus, 'cyan');
+		getTaskResume('mixed tasks', mixedTaskNames, mixedTaskStatus, 'magenta');
+		getTaskResume('watched tasks', watchedTaskNames, watchedTaskStatus, 'blue');
+		getTaskResume('others tasks', othersTaskNames, othersTaskStatus, 'yellow');
+	});
+
+	grunt.registerTask('deps', () => {
+		console.log('\nDev dependencies:'.green);
+		console.log(`
+		"colors": 1.4.0
+		"grunt": 1.4.1
+		"grunt-babel": 8.0.0
+		"grunt-contrib-compress": 2.0.0
+		"grunt-contrib-concat": 2.1.0
+		"grunt-contrib-htmlmin": 3.1.0
+		"grunt-contrib-imagemin": 4.0.0
+		"grunt-contrib-jshint": 3.2.0
+		"grunt-contrib-sass": 2.0.0
+		"grunt-contrib-uglify": 5.1.0
+		"grunt-contrib-watch": 1.1.0
+		"grunt-shell": 4.0.0
+		"grunt-text-replace": 0.4.0
+		"load-grunt-tasks": 5.1.0`);
+	});
 };
