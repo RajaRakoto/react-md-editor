@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './editor.scss';
 import { textTemplate } from './textTemplate';
 import { marked } from 'marked';
+import '../../dist/styles/editor.min.css';
 
 export default class Editor extends Component {
 	//TODO: verified - editor state
