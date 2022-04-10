@@ -4,10 +4,10 @@ import reportWebVitals from './reportWebVitals';
 /* components */
 import Editor from './components/editor/editor';
 /* styles */
-import './dist/index.min.css';
+import './dist/styles/index.min.css';
 /* assets */
-import githubLogo from './assets/github-ico.svg';
-import markdownLogo from './assets/markdown-ico.svg';
+import githubLogo from './dist/images/github-ico.svg';
+import markdownLogo from './dist/images/markdown-ico.svg';
 /* vars */
 const package_json = require('../package.json');
 const date = new Date();
