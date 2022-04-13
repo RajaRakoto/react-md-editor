@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": false,
   "dependencies": {
-    "@raja_rakotonirina/sass-eo": "^1.0.3",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -40,8 +39,9 @@
     ]
   },
   "devDependencies": {
+    "@raja_rakotonirina/sass-eo": "^1.1.4",
     "colors": "^1.4.0",
-    "grunt": "^1.4.1",
+    "grunt": "^1.5.2",
     "grunt-babel": "^8.0.0",
     "grunt-contrib-compress": "^2.0.0",
     "grunt-contrib-concat": "^2.1.0",
@@ -53,6 +53,7 @@
     "grunt-contrib-watch": "^1.1.0",
     "grunt-shell": "^4.0.0",
     "grunt-text-replace": "^0.4.0",
-    "load-grunt-tasks": "^5.1.0"
+    "load-grunt-tasks": "^5.1.0",
+    "sassdoc": "^2.7.3"
   }
 }
