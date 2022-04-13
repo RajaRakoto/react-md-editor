@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-@import './libs/sass-eo/sass-eo-frameworks.scss';
-@import './libs/sass-eo/sass-eo-basics.scss';
+@import '../node_modules/@raja_rakotonirina/sass-eo/sass-eo-frameworks.scss';
+@import '../node_modules/@raja_rakotonirina/sass-eo/sass-eo-basics.scss';
 
 /* global */
 @include normalize();
