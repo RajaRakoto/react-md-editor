@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@import '../../../node_modules/@raja_rakotonirina/sass-eo/sass-eo-basics.scss';
+@import 'sass-eo-basics.scss';
 
 #editor {
 	@include spacing-quick();
