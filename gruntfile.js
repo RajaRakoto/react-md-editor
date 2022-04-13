@@ -1,3 +1,9 @@
+/**
+ * @author: Raja
+ * @description: a gruntfile.js template for setting up a basic GRUNT task runner based environment to quickly integrate and use in a project
+ * @requires: npm install grunt load-grunt-tasks grunt-shell --save-dev
+ * @dependencies: grunt shell:install_deps
+ */
 module.exports = function (grunt) {
 	require('load-grunt-tasks')(grunt); // grunt plugins loader
 
@@ -9,6 +15,38 @@ module.exports = function (grunt) {
 	// node-glob syntax
 	const includeAllFiles = ['**/*', '.*/**/*', '**/.*', '**/.*/**/*'];
 
+	// shell cmd script
+	const npmInstallPrefix = 'npm install ';
+	const npmInstallMode = ' --save-dev';
+	const gruntPluginsNames = [
+		'grunt-contrib-jshint',
+		'grunt-contrib-concat',
+		'grunt-contrib-uglify',
+		'grunt-contrib-sass',
+		'grunt-text-replace',
+		'grunt-contrib-htmlmin',
+		'grunt-contrib-compress ',
+		'grunt-contrib-watch',
+		'grunt-babel',
+		'grunt-contrib-imagemin',
+	];
+	function getGruntPluginsArray() {
+		let tmp = [];
+		gruntPluginsNames.forEach(gruntPluginsNames => {
+			tmp.push(
+				`echo -e "\n[${gruntPluginsNames}] installation - please wait ..." && ` +
+					npmInstallPrefix +
+					gruntPluginsNames +
+					npmInstallMode,
+			);
+		});
+		return tmp;
+	}
+	const install_plugins_cmd = getGruntPluginsArray();
+
+	/**
+	 * ~ ALL GRUNT PLUGINS CONFIG ~
+	 */
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('./package.json'),
 
@@ -30,7 +68,7 @@ module.exports = function (grunt) {
 		 */
 		jshint: {
 			options: {
-				esversion: 11, // ecmascript version for jshint
+				esversion: 11, // ecmascript version to use
 				strict: false, // strict mode
 			},
 			dev: ['./gruntfile.js', './src/index.js', './src/components/**/*.js'], // js files to verify
@@ -142,18 +180,17 @@ module.exports = function (grunt) {
 			},
 		},
 
-		// TODO: verified - cmd: grunt shell:<command_name>
+		// TODO: verified
 		/**
 		 * Run shell commands
 		 */
 		shell: {
-			// example
-			dev: {
-				command: ['touch test'].join('&&'),
+			install_deps: {
+				command: install_plugins_cmd.join('&&'),
 			},
 		},
 
-		// TODO: verified - cmd: grunt compress:<bck_name>
+		// TODO: verified
 		/**
 		 * Compress files and folders (incremental backup)
 		 */
@@ -216,7 +253,6 @@ module.exports = function (grunt) {
 	grunt.registerTask('htmlmin-task', ['htmlmin:dist']); // manual
 	grunt.registerTask('sass-task', ['sass:dist']); // watched
 	grunt.registerTask('babel-task', ['babel:dist']); // manual
-	grunt.registerTask('shell-task', ['shell:dev']); // manual
 
 	// grunt mixed tasks
 	grunt.registerTask('compress-all', [
@@ -228,8 +264,9 @@ module.exports = function (grunt) {
 	// grunt watched tasks
 	grunt.registerTask('watch-sass', ['watch:sass']);
 
-	// grunt others tasks
+	// grunt shell & others tasks
 	grunt.registerTask('compress-modules'), ['compress:modules'];
+	grunt.registerTask('grunt-deps', ['shell:install_deps']);
 
 	// arrays basics tasks
 	const basicsTaskNames = [
@@ -264,8 +301,8 @@ module.exports = function (grunt) {
 	const watchedTaskStatus = ['watch:sass'];
 
 	// arrays others tasks
-	const othersTaskNames = ['compress-modules'];
-	const othersTaskStatus = ['compress:modules'];
+	const othersTaskNames = ['compress-modules', 'grunt-deps'];
+	const othersTaskStatus = ['compress:modules', 'shell:install_deps'];
 
 	// default tasks
 	grunt.registerTask('default', () => {
@@ -317,25 +354,11 @@ module.exports = function (grunt) {
 		getTaskResume('basics tasks', basicsTaskNames, basicsTaskStatus, 'cyan');
 		getTaskResume('mixed tasks', mixedTaskNames, mixedTaskStatus, 'magenta');
 		getTaskResume('watched tasks', watchedTaskNames, watchedTaskStatus, 'blue');
-		getTaskResume('others tasks', othersTaskNames, othersTaskStatus, 'yellow');
-	});
-
-	grunt.registerTask('deps', () => {
-		console.log('\nDev dependencies:'.green);
-		console.log(`
-		"colors": 1.4.0
-		"grunt": 1.4.1
-		"grunt-babel": 8.0.0
-		"grunt-contrib-compress": 2.0.0
-		"grunt-contrib-concat": 2.1.0
-		"grunt-contrib-htmlmin": 3.1.0
-		"grunt-contrib-imagemin": 4.0.0
-		"grunt-contrib-jshint": 3.2.0
-		"grunt-contrib-sass": 2.0.0
-		"grunt-contrib-uglify": 5.1.0
-		"grunt-contrib-watch": 1.1.0
-		"grunt-shell": 4.0.0
-		"grunt-text-replace": 0.4.0
-		"load-grunt-tasks": 5.1.0`);
+		getTaskResume(
+			'shell & others tasks',
+			othersTaskNames,
+			othersTaskStatus,
+			'yellow',
+		);
 	});
 };
