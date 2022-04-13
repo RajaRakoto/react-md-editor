@@ -150,7 +150,8 @@ module.exports = function (grunt) {
 		sass: {
 			dist: {
 				options: {
-					style: 'compressed', // output style: compact, expanded, compressed
+					style: 'compressed',
+					loadPath: ['./node_modules/@raja_rakotonirina/sass-eo'],
 				},
 				files: [
 					// scss file list
@@ -187,6 +188,31 @@ module.exports = function (grunt) {
 		shell: {
 			install_deps: {
 				command: install_plugins_cmd.join('&&'),
+			},
+			sassdoc: {
+				// to generate sassdoc
+				command: [
+					'cd ./node_modules/@raja_rakotonirina/sass-eo/',
+					'sassdoc .',
+					'cd sassdoc',
+					'xdg-open index.html',
+				].join('&&'),
+			},
+			loader: {
+				// to get loader docs
+				command: [
+					'cd ./node_modules/@raja_rakotonirina/sass-eo/',
+					'cd docs/loader',
+					'xdg-open index.html',
+				].join('&&'),
+			},
+			magic: {
+				// to get magic docs
+				command: [
+					'cd ./node_modules/@raja_rakotonirina/sass-eo/',
+					'cd docs/magic',
+					'xdg-open index.html',
+				].join('&&'),
 			},
 		},
 
@@ -267,6 +293,9 @@ module.exports = function (grunt) {
 	// grunt shell & others tasks
 	grunt.registerTask('compress-modules'), ['compress:modules'];
 	grunt.registerTask('grunt-deps', ['shell:install_deps']);
+	grunt.registerTask('basics-docs', ['shell:sassdoc']);
+	grunt.registerTask('loader-docs', ['shell:loader']);
+	grunt.registerTask('magic-docs', ['shell:magic']);
 
 	// arrays basics tasks
 	const basicsTaskNames = [
@@ -301,8 +330,20 @@ module.exports = function (grunt) {
 	const watchedTaskStatus = ['watch:sass'];
 
 	// arrays others tasks
-	const othersTaskNames = ['compress-modules', 'grunt-deps'];
-	const othersTaskStatus = ['compress:modules', 'shell:install_deps'];
+	const othersTaskNames = [
+		'compress-modules',
+		'grunt-deps',
+		'basics-docs',
+		'loader-docs',
+		'magic-docs',
+	];
+	const othersTaskStatus = [
+		'compress:modules',
+		'shell:install_deps',
+		'shell:sassdoc',
+		'shell:loader',
+		'shell:magic',
+	];
 
 	// default tasks
 	grunt.registerTask('default', () => {
