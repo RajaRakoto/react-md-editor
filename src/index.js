@@ -6,8 +6,8 @@ import Editor from './components/editor/editor';
 /* styles */
 import './index.min.css';
 /* assets */
-import githubLogo from './dist/images/github-ico.svg';
-import markdownLogo from './dist/images/markdown-ico.svg';
+import githubLogo from './assets/images/github-ico.svg';
+import markdownLogo from './assets/images/markdown-ico.svg';
 /* vars */
 const package_json = require('../package.json');
 const date = new Date();
