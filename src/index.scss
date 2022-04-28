@@ -25,12 +25,12 @@ body {
 /* header */
 header {
 	text-align: center;
-	@include spacing-quick();
+	@include spacing-all-gabarit($gabarit: medium);
 
 	span {
 		color: #2c2f2fa6;
 		font-size: toRem(20px);
-		@include effect-text-light(large, #ffff);
+		@include effect-text-light($opacity: large, $colors: #eee);
 	}
 
 	#version {
