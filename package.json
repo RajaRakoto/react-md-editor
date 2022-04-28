@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": false,
   "dependencies": {
+    "@raja_rakoto/minificator": "^1.1.1",
     "@raja_rakoto/sass-eo": "^1.3.2",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
