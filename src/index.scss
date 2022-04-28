@@ -25,18 +25,18 @@ body {
 /* header */
 header {
 	text-align: center;
-	@include spacing-quick();
+	@include spacing-all-gabarit($gabarit: medium);
 
 	span {
 		color: #2c2f2fa6;
-		font-size: toRem(20px);
-		@include effect-text-light(large, #ffff);
+		font-size: __convertToRem($value: 20px);
+		@include effect-text-light($opacity: large, $colors: #eee);
 	}
 
 	#version {
 		color: #445351a6;
 		background-color: rgba(238, 238, 238, 0.233);
-		width: toRem(120px);
+		width: __convertToRem($value: 120px);
 		padding: 0.3rem;
 		margin: auto;
 		border-radius: 1rem;

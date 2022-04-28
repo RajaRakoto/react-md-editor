@@ -3,13 +3,13 @@
 @import 'sass-eo-basics.scss';
 
 #editor {
-	@include spacing-quick();
+	@include spacing-all-gabarit($gabarit: medium);
 }
 
 label,
 textarea {
 	font-size: 0.8rem;
-	letter-spacing: toRem(1px);
+	letter-spacing: __convertToRem($value: 1px);
 }
 
 textarea {
@@ -31,7 +31,7 @@ textarea {
 
 #output {
 	border-radius: 2rem;
-	@include spacing-quick();
+	@include spacing-all-gabarit($gabarit: medium);
 }
 
 label {
@@ -39,13 +39,13 @@ label {
 	background-color: rgba(204, 204, 204, 0.192);
 	border-radius: 0.3rem;
 	width: 100px;
-	@include spacing-quick(small);
+	@include spacing-all-gabarit($gabarit: small);
 }
 
 #area {
 	&_text,
 	&_md {
-		@include spacing-quick();
+		@include spacing-all-gabarit($gabarit: medium);
 	}
 
 	&_text {
