@@ -9,7 +9,7 @@
 label,
 textarea {
 	font-size: 0.8rem;
-	letter-spacing: toRem(1px);
+	letter-spacing: __convertToRem($value: 1px);
 }
 
 textarea {
