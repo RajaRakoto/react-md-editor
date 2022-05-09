@@ -4,19 +4,16 @@ import { marked } from 'marked';
 import './editor.min.css';
 
 export default class Editor extends Component {
-	//TODO: verified - editor state
 	state = {
 		// textTemplate -> valeur par defaut pour textarea
 		typing: textTemplate,
 	};
 
-	//TODO: verified - save typing state
 	componentDidUpdate() {
 		const typing = this.state.typing;
 		localStorage.setItem('typing-data', typing);
 	}
 
-	//TODO: verified - get typing last state
 	componentDidMount() {
 		const typing = localStorage.getItem('typing-data');
 
@@ -28,7 +25,6 @@ export default class Editor extends Component {
 		}
 	}
 
-	//TODO: verified - sync typing with editor state
 	handleChange = event => {
 		// ecouteur d'evenement sur chaque changement
 		const typing = event.target.value;
@@ -36,7 +32,6 @@ export default class Editor extends Component {
 		this.setState({ typing });
 	};
 
-	//TODO: work - marked core
 	/**
 	 *
 	 * @param {state} typing test2
