@@ -1,6 +1,6 @@
 /**
  * @author: Raja
- * @description: gruntfile for md-editor project
+ * @description: gruntfile for react-md-editor project
  * @requires: grunt-contrib-compress
  */
 module.exports = function (grunt) {
@@ -150,6 +150,6 @@ module.exports = function (grunt) {
 		}
 
 		// task resume
-		getTaskResume('~ MD-EDITOR TASKS ~', myTasksNames, myTasksStatus, 'yellow');
+		getTaskResume('~ REACT-MD-EDITOR TASKS ~', myTasksNames, myTasksStatus, 'yellow');
 	});
 };

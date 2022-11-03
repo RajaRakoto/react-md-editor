@@ -30,8 +30,8 @@ function Header() {
 function Footer() {
 	const copyright = '© ' + date.getFullYear() + ' - MIT license';
 	const githubLink = (
-		<a href="https://github.com/RajaRakoto/md-editor">
-			<img src={githubLogo} alt="md-editor github" width={32}></img>
+		<a href="https://github.com/RajaRakoto/react-md-editor">
+			<img src={githubLogo} alt="react-md-editor github" width={32}></img>
 		</a>
 	);
 	const author = <a href="https://github.com/RajaRakoto/">by Raja</a>;
