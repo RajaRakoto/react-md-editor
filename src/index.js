@@ -12,7 +12,6 @@ import markdownLogo from './assets/images/markdown-ico.svg';
 const package_json = require('../package.json');
 const date = new Date();
 
-//TODO: verified - header (title, version, logo)
 function Header() {
 	const title1 = 'Markdown';
 	const title2 = '< Editor />';
@@ -28,12 +27,11 @@ function Header() {
 	);
 }
 
-//TODO: verified - footer (copyright, links, author)
 function Footer() {
 	const copyright = '© ' + date.getFullYear() + ' - MIT license';
 	const githubLink = (
-		<a href="https://github.com/RajaRakoto/md-editor">
-			<img src={githubLogo} alt="md-editor github" width={32}></img>
+		<a href="https://github.com/RajaRakoto/react-md-editor">
+			<img src={githubLogo} alt="react-md-editor github" width={32}></img>
 		</a>
 	);
 	const author = <a href="https://github.com/RajaRakoto/">by Raja</a>;
@@ -54,7 +52,6 @@ function Footer() {
 	);
 }
 
-//TODO: verified - all render
 ReactDOM.render(
 	<Fragment>
 		<div className="background--custom"></div>
