@@ -1,61 +1,75 @@
 {
-  "name": "md-editor",
-  "version": "1.0.0",
-  "private": false,
-  "dependencies": {
-    "@raja_rakoto/minificator": "^1.1.1",
-    "@raja_rakoto/sass-eo": "^1.3.3",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.1.1",
-    "@testing-library/user-event": "^14.1.1",
-    "boostrap": "^2.0.0",
-    "marked": "^4.0.14",
-    "node-sass": "^7.0.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "colors": "^1.4.0",
-    "grunt": "^1.5.2",
-    "grunt-babel": "^8.0.0",
-    "grunt-contrib-compress": "^2.0.0",
-    "grunt-contrib-concat": "^2.1.0",
-    "grunt-contrib-cssmin": "^4.0.0",
-    "grunt-contrib-htmlmin": "^3.1.0",
-    "grunt-contrib-imagemin": "^4.0.0",
-    "grunt-contrib-jshint": "^3.2.0",
-    "grunt-contrib-sass": "^2.0.0",
-    "grunt-contrib-uglify": "^5.2.1",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-shell": "^4.0.0",
-    "grunt-text-replace": "^0.4.0",
-    "load-grunt-tasks": "^5.1.0",
-    "sassdoc": "^2.7.4"
-  }
+	"name": "react-md-editor",
+	"version": "1.0.0",
+	"private": false,
+	"dependencies": {
+		"@raja_rakoto/minificator": "^1.1.1",
+		"@testing-library/jest-dom": "^5.16.4",
+		"@testing-library/react": "^13.1.1",
+		"@testing-library/user-event": "^14.1.1",
+		"boostrap": "^2.0.0",
+		"marked": "^4.0.14",
+		"node-sass": "^7.0.1",
+		"react": "^18.1.0",
+		"react-dom": "^18.1.0",
+		"react-scripts": "5.0.1",
+		"web-vitals": "^2.1.4"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"sasseo-install": "npm i @raja_rakoto/sass-eo --save-dev",
+		"sasseo-deps": "npm i grunt grunt-contrib-sass grunt-contrib-watch grunt-shell load-grunt-tasks sassdoc -D",
+		"sasseo-update": "npm update @raja_rakoto/sass-eo",
+		"sasseo-init-cli": "grunt --gruntfile ./node_modules/@raja_rakoto/sass-eo/config/gen.cjs generate-sasseo-cli",
+		"sasseo-start-cli": "grunt --gruntfile sass-eo-cli.js",
+		"sasseo-watch": "grunt --gruntfile sass-eo-cli.js watch-sass",
+		"sasseo-docs-basics": "grunt --gruntfile sass-eo-cli.js sseo-docs",
+		"sasseo-docs-loaders": "grunt --gruntfile sass-eo-cli.js loaders-docs",
+		"sasseo-docs-magic": "grunt --gruntfile sass-eo-cli.js magic-docs",
+		"sasseo-docs-milligrid": "grunt --gruntfile sass-eo-cli.js milligrid-docs",
+		"sasseo-config-hamburgers": "grunt --gruntfile sass-eo-cli.js hamburgers-config",
+		"sasseo-app-gridmaker": "grunt --gruntfile sass-eo-cli.js grid-maker",
+		"sasseo-app-flexboxmaker": "grunt --gruntfile sass-eo-cli.js flexbox-maker",
+		"sasseo-app-boxshadowmaker": "grunt --gruntfile sass-eo-cli.js boxshadow-maker"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@raja_rakoto/sass-eo": "^1.7.1",
+		"colors": "^1.4.0",
+		"grunt": "^1.5.3",
+		"grunt-babel": "^8.0.0",
+		"grunt-contrib-compress": "^2.0.0",
+		"grunt-contrib-concat": "^2.1.0",
+		"grunt-contrib-cssmin": "^4.0.0",
+		"grunt-contrib-htmlmin": "^3.1.0",
+		"grunt-contrib-imagemin": "^4.0.0",
+		"grunt-contrib-jshint": "^3.2.0",
+		"grunt-contrib-sass": "^2.0.0",
+		"grunt-contrib-uglify": "^5.2.1",
+		"grunt-contrib-watch": "^1.1.0",
+		"grunt-shell": "^4.0.0",
+		"grunt-text-replace": "^0.4.0",
+		"load-grunt-tasks": "^5.1.0",
+		"sassdoc": "^2.7.4"
+	}
 }
